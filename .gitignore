@@ -3,6 +3,9 @@
 # dependencies
 node_modules/
 
+#sdk_configuration
+firebase_config/
+
 # Expo
 .expo/
 dist/
@@ -30,8 +33,9 @@ yarn-error.*
 .DS_Store
 *.pem
 
-# local env files
+# env files
 .env*.local
+**/.env
 
 # typescript
 *.tsbuildinfo
