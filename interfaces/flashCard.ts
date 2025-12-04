@@ -7,6 +7,6 @@ export default interface FlashCard extends Phrase{
     imageUrl?: string
     tags?: string[]
     createdAt: Date
-    updatedAt: Date
+    updatedAt?: Date
 }
 

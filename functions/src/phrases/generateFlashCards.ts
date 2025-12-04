@@ -1,7 +1,7 @@
 import getLLM from "../models/model";
 import getImageUrl from "../helpers/getImage";
-import FlashCard from "./interfaces/flashCard";
-import Phrase from "./interfaces/phrase";
+import FlashCard from "../../../interfaces/flashCard";
+import Phrase from "../../../interfaces/phrase";
 
 import { HumanMessage, SystemMessage } from "langchain";
 import { z } from "zod";
@@ -49,8 +49,8 @@ export async function generateFlashCards(
             let flashcardImage = await getImageUrl(flashcard.content_english);
 
             return {
-                id_motherTongue: phrases[0].id_motherTongue,
-                id_targetLanguage: phrases[0].id_targetLanguage,
+                id_motherTongue: phrases[0].iso_motherTongue,
+                id_targetLanguage: phrases[0].iso_targetLanguage,
                 content_motherTongue: flashcard.content_motherTongue,
                 content_targetLanguage: flashcard.content_targetLanguage,
                 content_english: flashcard.content_english,

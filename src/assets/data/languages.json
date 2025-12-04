@@ -1,0 +1,24 @@
+{ 
+  "languages": [
+    {
+      "iso": "en",
+      "flagUrl": "@/src/assets/images/flags/en.svg",
+      "flagColors": ["FFFFFF", "C8102E", "012169"]
+    },
+    {
+      "iso": "pl",
+      "flagUrl": "@/src/assets/images/flags/pl.svg",
+      "flagColors": ["FFFFFF", "DC143C"]
+    },
+    {
+      "iso": "it",
+      "flagUrl": "@/src/assets/images/flags/it.svg",
+      "flagColors": ["008C45", "F4F9FF", "CD212A"]
+    },
+    {
+      "iso": "fr",
+      "flagUrl": "@/src/assets/images/flags/fr.svg",
+      "flagColors": ["000091", "FFFFFF", "E1000F"]
+    }
+  ]
+}

@@ -1,8 +1,9 @@
 import getLLM from "../models/model";
-import Phrase from "./interfaces/phrase";
+import Phrase from "../../../interfaces/phrase";
 
 import { HumanMessage, SystemMessage } from "langchain";
 import { z } from "zod";
+import { LanguageIso } from "../../../interfaces/language";
 
 const PhraseSchema = z.object({
   content_motherTongue: z.string().describe("Content of the phrase in the mother tongue"),
@@ -14,8 +15,8 @@ type PhraseOutput = z.infer<typeof PhraseSchema>
 const PhrasesSchema = z.array(PhraseSchema);
 
 export async function generatePhrases(
-  id_motherTongue: string, 
-  id_targetLanguage: string, 
+  iso_motherTongue: LanguageIso, 
+  iso_targetLanguage: LanguageIso, 
   userHobbies: string[], 
   numberOfPhrases: number
 ): Promise<Phrase[] | null> {
@@ -34,15 +35,15 @@ export async function generatePhrases(
     Each phrase should include its content in both the mother tongue and the target language. Each phrase should be one word or a couple of words 
     with a meaning in target language. Ensure the phrases are common and useful for everyday conversations.`);
 
-  const humanMessage = new HumanMessage(`Generate the phrases in: ${id_motherTongue} and 
-    translate them to: ${id_targetLanguage}. ${userHobbiesString}.`);
+  const humanMessage = new HumanMessage(`Generate the phrases in: ${iso_motherTongue} and 
+    translate them to: ${iso_targetLanguage}. ${userHobbiesString}.`);
 
   try {
     const response = await model!.invoke([systemMessage, humanMessage]);
     
-    const phrases: Phrase[] = response.map((phrase: PhraseOutput) => ({
-      id_motherTongue: id_motherTongue,
-      id_targetLanguage: id_targetLanguage,
+    const phrases: Phrase[] = response.map((phrase: PhraseOutput): Phrase => ({
+      iso_motherTongue: iso_motherTongue,
+      iso_targetLanguage: iso_targetLanguage,
       content_motherTongue: phrase.content_motherTongue,
       content_targetLanguage: phrase.content_targetLanguage
     }));
