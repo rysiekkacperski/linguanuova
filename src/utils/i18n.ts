@@ -10,6 +10,17 @@ const resources = {
         it: "Italian",
         fr: "French"
       },
+      common: {
+        save: 'Save changes',
+        continue: 'Save & continue',
+        search: 'Search...',
+        skip: 'Skip for now',
+        cancel: 'Cancel',
+        textTooLong: "Text is too long",
+        noResults: "No results found",
+        back: 'Back',
+        next: 'Next',
+      },
       views:{
         noLanguagePair:{
           header: "You don't have any language pair :(",
@@ -23,6 +34,60 @@ const resources = {
           info: "Remember that you should be an advanced user of the primary language to learn effectively",
           primaryLang: "Primary language:",
           taughtLang: "Taught language:"
+        },
+        userDescription: {
+          editTitle: "Edit description",
+          editSubtitle: 'Descrive yourself better to let AI create more practical examples',
+          title: "Let's get to know you!",
+          subtitle: "Describe who you are (profession, hobbies) and why you want to learn the language. This helps AI create practical examples",
+          placeholder: "E.g. I work as a graphic designer, learning Japanese because I love manga and plan a trip to Tokyo...",
+        },
+        userHobbies: {
+          hobbies: {
+            "travel": "Travel",
+            "technology": "Technology",
+            "cooking": "Cooking",
+            "sport": "Sport",
+            "music": "Music",
+            "movies": "Movies",
+            "gaming": "Gaming", 
+            "reading": "Reading",
+            "gym": "Gym",
+            "photography": "Photography",
+            "business": "Business",
+            "languages": "Languages",
+            "art": "Art",
+            "cars": "Cars",
+          },
+          title: "What are you interested in?",
+          edit_title: "Edit your hobbies",
+          subtitle: "Pick your hobbies to help AI create better flashcards"
+        },
+        userGoals: {
+          title: "What are your main goal?",
+          subtitle: "Pick main goal which you have while learning the language"
+        },
+        goals:{
+          tourism: {
+            name: 'Tourism',
+            description: 'I want to use the language while travelling'
+          },
+          casual: {
+            name: 'Casual',
+            description: 'I want to talk with others and make new friends'
+          },
+          business: {
+            name: 'Business',
+            description: 'I need to communicate in a professional way'
+          },
+          academic: {
+            name: 'Academic',
+            description: 'I want to study in the choosen language'
+          },
+          culture: {
+            name: 'Culture',
+            desription: 'I want to read books, watch films and understand art'
+          }
         }
       }
     }

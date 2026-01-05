@@ -1,0 +1,22 @@
+[
+  { 
+    "id": "tourism", 
+    "iconName": "map-marker-radius"
+  },
+  { 
+    "id": "casual", 
+    "iconName": "chat-processing"
+  },
+  { 
+    "id": "business", 
+    "iconName": "briefcase-variant"
+  },
+  { 
+    "id": "academic", 
+    "iconName": "school"
+  },
+  { 
+    "id": "culture", 
+    "iconName": "book-open-page-variant"
+  }
+]
