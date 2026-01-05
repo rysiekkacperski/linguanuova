@@ -6,7 +6,7 @@ import { Button, Text } from "react-native-paper";
 import highFiveAniamtion from '@/src/assets/animations/high-five.json';
 import Lottie from "lottie-react";
 
-export default function NoLanguagePairView(){
+export default function NoLanguagePairScreen(){
 
   const [ t ] = useTranslation('translation', { keyPrefix: 'views.noLanguagePair' });
   const header = t('header')
