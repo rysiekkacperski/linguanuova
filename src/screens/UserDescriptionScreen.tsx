@@ -19,13 +19,15 @@ const MAX_LENGTH = 280;
 
 interface UserDescriptionScreenProps {
   onSuccess: () => void;
-  onSkip: () => void;
+  onSkip?: () => void;
+  onCancel?: () => void;
 }
 
-export const UserDescriptionScreen = ({ 
+export default function UserDescriptionScreen ({ 
   onSuccess, 
-  onSkip
-}: UserDescriptionScreenProps) => {
+  onSkip,
+  onCancel
+}: UserDescriptionScreenProps){
   const theme = useTheme();
   const router = useRouter();
   const store = useStore();
@@ -52,10 +54,6 @@ export const UserDescriptionScreen = ({
     }
     onSuccess();
   }
-
-  const handleSkip = () => {
-    onSkip();
-  };
 
   return (
     <SafeAreaView style={[styles.container, { backgroundColor: theme.colors.background }]}>
@@ -135,22 +133,22 @@ export const UserDescriptionScreen = ({
               {!isEditMode ? (
                 <Button
                   mode="text"
-                  onPress={handleSkip}
+                  onPress={onSkip}
                   style={styles.skipButton}
                   icon={({ size, color }) => <SkipForward size={size} color={color} />}
                 >
                   {i18n.t('common.skip')}
                 </Button>
-              ) : (
+              ) : onCancel ? (
                 <Button
                   mode="outlined"
-                  onPress={() => router.back()}
+                  onPress={onCancel}
                   style={styles.skipButton}
                   icon={({ size, color }) => <X size={size} color={color} />}
                 >
                   {i18n.t('common.cancel')}
                 </Button>
-              )}
+              ): <></>}
             </View>
 
           </Animated.View>
