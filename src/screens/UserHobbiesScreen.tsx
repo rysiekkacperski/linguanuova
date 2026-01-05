@@ -33,13 +33,13 @@ const ITEM_WIDTH = (width - PADDING - GAP) / 2;
 type HobbyItem = Hobby & { translatedName: string };
 
 interface UserHobbiesScreenProps {
-  callbackAction: 'navigate' | 'replace'
-  callbackUrl: string
+  onSuccess: () => void;
+  onSkip: () => void;
 }
 
 export default function UserHobbiesScreen({ 
-  callbackAction, 
-  callbackUrl 
+  onSuccess, 
+  onSkip
 }: UserHobbiesScreenProps) {
   const theme = useTheme();
   const { t } = useTranslation();
@@ -83,25 +83,17 @@ export default function UserHobbiesScreen({
       return [...prev, key];
     });
   }, []);
-  
-  const useScreenCallback = () => {
-    if (callbackAction === 'navigate') {
-      router.navigate(callbackUrl);
-    } else if (callbackAction === 'replace') {
-      router.replace(callbackUrl);
-    }
-  }
 
   const handleSave = () => {
     if (!store && !!selectedHobbies.length) return;
     const hobbiesToSave = selectedHobbies.map((key) => ({ 'key' : key }));
     const hobbiesIds = [...Array(hobbiesToSave.length).keys()]
     store?.setTable('hobbies', Object.fromEntries([hobbiesIds, hobbiesToSave]));
-    useScreenCallback();
+    onSuccess();
   };
 
   const handleSkip = () => {
-    useScreenCallback();
+    onSkip();
   };
 
   const renderItem = ({ item, index }: { item: HobbyItem, index: number }) => {

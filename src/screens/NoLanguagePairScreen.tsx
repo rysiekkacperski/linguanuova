@@ -6,7 +6,11 @@ import { Button, Text } from "react-native-paper";
 import highFiveAniamtion from '@/src/assets/animations/high-five.json';
 import Lottie from "lottie-react";
 
-export default function NoLanguagePairScreen(){
+interface NoLanguagePairScreenProps {
+  onSkip: () => void;
+}
+
+export default function NoLanguagePairScreen({ onSkip }:NoLanguagePairScreenProps){
 
   const [ t ] = useTranslation('translation', { keyPrefix: 'views.noLanguagePair' });
   const header = t('header')
@@ -20,7 +24,7 @@ export default function NoLanguagePairScreen(){
       <Text variant="headlineLarge">{header.toUpperCase()}</Text>
       <Lottie animationData={highFiveAniamtion} />
       <Text variant="bodyMedium">{description}</Text>
-      <Button mode="elevated">{primaryTextButton}</Button>
+      <Button mode="elevated" onPress={onSkip}>{primaryTextButton}</Button>
     </View>
   );
 }

@@ -18,13 +18,13 @@ import i18n from '../utils/i18n';
 const MAX_LENGTH = 280;
 
 interface UserDescriptionScreenProps {
-  callbackAction: 'navigate' | 'replace'
-  callbackUrl: string
+  onSuccess: () => void;
+  onSkip: () => void;
 }
 
 export const UserDescriptionScreen = ({ 
-  callbackAction, 
-  callbackUrl 
+  onSuccess, 
+  onSkip
 }: UserDescriptionScreenProps) => {
   const theme = useTheme();
   const router = useRouter();
@@ -46,23 +46,15 @@ export const UserDescriptionScreen = ({
   const charsLeft = MAX_LENGTH - description.length;
   const isOverLimit = charsLeft < 0;
 
-  const useScreenCallback = () => {
-    if (callbackAction === 'navigate') {
-      router.navigate(callbackUrl);
-    } else if (callbackAction === 'replace') {
-      router.replace(callbackUrl);
-    }
-  }
-
   const handleSave = () => {
     if (description.trim() !== initialDescription){
       store?.setValue('userDescription', description.trim());
     }
-    useScreenCallback();
+    onSuccess();
   }
 
   const handleSkip = () => {
-    useScreenCallback();
+    onSkip();
   };
 
   return (
