@@ -28,12 +28,12 @@ const resources = {
           primaryButtonText: "Let's start",
         },
         addLanguagePair:{
-          header:"Are you ready for new journey?",
-          description: "Pick primary and taught languages to start your learning process",
-          primaryButtonText: "Add new pair",
-          info: "Remember that you should be an advanced user of the primary language to learn effectively",
-          primaryLang: "Primary language:",
-          taughtLang: "Taught language:"
+          goal_title: "Pick your goal",
+          goal_subtitle: "Your goal will let us generate flash cards tailored to your needs",
+          taught_title: "What do you want to learn?",
+          taught_subtitle: "Pick language you want to improve",
+          leading_title: "Choose a basic language",
+          leading_subtitle: "Pick the language you know well. All phrases will be translated to it",   
         },
         userDescription: {
           editTitle: "Edit description",
@@ -88,6 +88,11 @@ const resources = {
             name: 'Culture',
             desription: 'I want to read books, watch films and understand art'
           }
+        },
+        welcomeUser:{
+          header: "Are you ready for new journey?",
+          description: "We need to gather some basic info about you to improve you experience. Trust us, it won't take even two minutes!",
+          primaryButtonText: "Let's start!"
         }
       }
     }

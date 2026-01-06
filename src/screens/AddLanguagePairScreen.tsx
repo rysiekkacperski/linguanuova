@@ -22,8 +22,8 @@ interface LanguagePairFormData {
 
 // Props definition
 interface AddLanguagePairScreenProps {
-  onSuccess: () => void; // Callback po pomyślnym zapisie
-  onCancel?: () => void; // Opcjonalny callback dla przycisku "Wróć" / "Zamknij"
+  onSuccess: () => void;
+  onCancel?: () => void;
 }
 
 const steps = {
@@ -73,11 +73,10 @@ export const AddLanguagePairScreen: React.FC<AddLanguagePairScreenProps> = ({ on
 
   const saveAndFinish = useCallback(() => {
     try {
-      // 1. Walidacja
       if (!formData.leadingLanguageIso || !formData.taughtLanguageIso || !formData.goal) {
         Alert.alert(
           i18n.t('common.error'), 
-          i18n.t('add_pair.validation_error')
+          i18n.t('addLanguagePair.validation_error')
         );
         return;
       }
@@ -110,7 +109,7 @@ export const AddLanguagePairScreen: React.FC<AddLanguagePairScreenProps> = ({ on
       console.error('[AddLanguagePair] Save error:', error);
       Alert.alert(
         i18n.t('common.error'), 
-        i18n.t('add_pair.save_error')
+        i18n.t('addLanguagePair.save_error')
       );
     }
   }, [formData, onSuccess, store]);
@@ -122,8 +121,8 @@ export const AddLanguagePairScreen: React.FC<AddLanguagePairScreenProps> = ({ on
       case steps.leadingLang:
         return (
           <LanguagePicker
-            title={i18n.t('add_pair.leading_title', { defaultValue: 'Język bazowy' })}
-            subtitle={i18n.t('add_pair.leading_subtitle', { defaultValue: 'Wybierz język, który znasz najlepiej.' })}
+            title={i18n.t('addLanguagePair.leading_title')}
+            subtitle={i18n.t('addLanguagePair.leading_subtitle')}
             selectedIso={formData.leadingLanguageIso}
             onSelect={(iso) => updateData('leadingLanguageIso', iso)}
             onNext={handleNext}
@@ -135,8 +134,8 @@ export const AddLanguagePairScreen: React.FC<AddLanguagePairScreenProps> = ({ on
       case steps.taughtLang:
         return (
           <LanguagePicker
-            title={i18n.t('add_pair.taught_title', { defaultValue: 'Czego chcesz się nauczyć?' })}
-            subtitle={i18n.t('add_pair.taught_subtitle', { defaultValue: 'Wybierz język docelowy.' })}
+            title={i18n.t('addLanguagePair.taught_title')}
+            subtitle={i18n.t('addLanguagePair.taught_subtitle')}
             selectedIso={formData.taughtLanguageIso}
             onSelect={(iso) => updateData('taughtLanguageIso', iso)}
             onNext={handleNext}
@@ -149,8 +148,8 @@ export const AddLanguagePairScreen: React.FC<AddLanguagePairScreenProps> = ({ on
       case steps.goal:
         return (
           <GoalPicker
-            title={i18n.t('add_pair.goal_title', { defaultValue: 'Jaki jest Twój cel?' })}
-            subtitle={i18n.t('add_pair.goal_subtitle', { defaultValue: 'Dostosujemy materiał do Twoich potrzeb.' })}
+            title={i18n.t('addLanguagePair.goal_title')}
+            subtitle={i18n.t('addLanguagePair.goal_subtitle')}
             selectedGoalId={formData.goal}
             onSelect={(id) => updateData('goal', id)}
             onNext={saveAndFinish}
